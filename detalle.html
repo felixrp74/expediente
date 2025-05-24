@@ -1,294 +1,390 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consulta de Expediente - Tailwind</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Boxicons -->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+    />
     <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
 
-</head>
-
-<body class="bg-gray-100 text-sm">
-
+  <body class="bg-gray-100 text-sm">
     <!-- Encabezado rojo -->
-    <div class="bg-[#0287dd] text-white px-4 py-2 flex justify-between items-center">
-        <div>
-            <h1>sdas</h1>
-        </div>
-        <div class="text-right">
-            <span class="text-sm font-semibold">Consulta en Línea del Estado de Expedientes del Tribunal del Servicio
-                Civil (CLEE-TSC)</span><br>
-            <span class="text-xs">Versión 1.0.2.0</span>
-        </div>
+    <div
+      class="bg-[#0287dd] text-white px-4 py-2 flex justify-between items-center"
+    >
+      <div>
+        <h1>sdas</h1>
+      </div>
+      <div class="text-right">
+        <span class="text-sm font-semibold"
+          >Consulta en Línea del Estado de Expedientes del Tribunal del Servicio
+          Civil (CLEE-TSC)</span
+        ><br />
+        <span class="text-xs">Versión 1.0.2.0</span>
+      </div>
     </div>
 
-
     <!-- Modal (oculto por defecto) -->
-    <div id="pdfModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg shadow-xl w-11/12 max-w-6xl h-5/6 flex flex-col">
-            <!-- Encabezado del modal -->
-            <div class="flex justify-between items-center p-4 border-b">
-                <h3 class="text-xl font-semibold">Visualización de Documento</h3>
-                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Contenido del modal (PDF) -->
-            <div class="flex-1 overflow-hidden">
-                <object id="pdfViewer" data="documento.pdf" type="application/pdf" class="w-full h-full">
-                    <div class="flex items-center justify-center h-full bg-gray-100">
-                        <p class="text-gray-500">No se puede visualizar el PDF. <a href="Documento.pdf"
-                                class="text-blue-500 hover:underline">Descargar</a> en su lugar.</p>
-                    </div>
-                </object>
-            </div>
-
-            <!-- Pie del modal -->
-            <div class="flex justify-between items-center p-4 border-t text-sm text-gray-500">
-                <div>Página <span id="currentPage">1</span> de <span id="totalPages">18</span></div>
-                <div>90%</div>
-                <div>ESC</div>
-            </div>
+    <div
+      id="pdfModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white rounded-lg shadow-xl w-11/12 max-w-6xl h-5/6 flex flex-col"
+      >
+        <!-- Encabezado del modal -->
+        <div class="flex justify-between items-center p-4 border-b">
+          <h3 class="text-xl font-semibold">Visualización de Documento</h3>
+          <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
         </div>
+
+        <!-- Contenido del modal (PDF) -->
+        <div class="flex-1 overflow-hidden">
+          <object
+            id="pdfViewer"
+            data="https://github.com/felixrp74/expediente/blob/d4dcd34b1923cf8c11a29f887506595a31ec445b/PDF/RESOLUCIONES/1.%20Resolucion%20N%C2%B0%2001/1.%20RESOLUCI%C3%93N%20N%C2%B0%2001.pdf"
+            type="application/pdf"
+            class="w-full h-full"
+          >
+            <div class="flex items-center justify-center h-full bg-gray-100">
+              <p class="text-gray-500">
+                No se puede visualizar el PDF.
+                <a href="https://github.com/felixrp74/expediente/blob/d4dcd34b1923cf8c11a29f887506595a31ec445b/PDF/RESOLUCIONES/1.%20Resolucion%20N%C2%B0%2001/1.%20RESOLUCI%C3%93N%20N%C2%B0%2001.pdf" class="text-blue-500 hover:underline"
+                  >Descargar</a
+                >
+                en su lugar.
+              </p>
+            </div>
+          </object>
+        </div>
+
+        <!-- Pie del modal -->
+        <div
+          class="flex justify-between items-center p-4 border-t text-sm text-gray-500"
+        >
+          <div>
+            Página <span id="currentPage">1</span> de
+            <span id="totalPages">18</span>
+          </div>
+          <div>90%</div>
+          <div>ESC</div>
+        </div>
+      </div>
     </div>
     <!-- Contenedor principal -->
     <div class="max-w-5xl mx-auto mt-6 bg-white shadow p-6">
-        <!-- Navegación -->
-        <div class="flex justify-between items-center mb-4">
-            <div class="flex gap-2">
-                <button class="text-[#0287dd] flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                    Inicio
-                </button>
-                <button class="text-[#0287dd] flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    Retroceder
-                </button>
+      <!-- Navegación -->
+      <div class="flex justify-between items-center mb-4">
+        <div class="flex gap-2">
+          <button class="text-[#0287dd] flex items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+              />
+            </svg>
+            Inicio
+          </button>
+          <button class="text-[#0287dd] flex items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            Retroceder
+          </button>
+        </div>
+        <div class="text-gray-600 text-sm">
+          FECHA ULT. ACTUALIZACIÓN: 11/04/2025
+        </div>
+      </div>
+
+      <!-- Tabs simulados -->
+      <div class="flex border-b border-gray-300 mb-4">
+        <button
+          class="px-4 py-2 font-semibold text-sm border-b-2 border-[#0287dd] text-[#0287dd]"
+        >
+          Expediente
+        </button>
+      </div>
+
+      <!-- Sección Detalle del Expediente -->
+      <div class="mb-6">
+        <h2 class="text-base font-semibold text-gray-800 mb-2">
+          DETALLE DEL EXPEDIENTE
+        </h2>
+        <div class="border border border-[#0287dd]">
+          <table class="min-w-full divide-y divide-gray-200">
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">
+                  NRO. EXPEDIENTE
+                </td>
+                <td class="px-4 py-2 whitespace-nowrap">00023-2025</td>
+                <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">
+                  FECHA INGRESO
+                </td>
+                <td class="px-4 py-2 whitespace-nowrap">10/12/2024</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">
+                  ESTADO
+                </td>
+                <td class="px-4 py-2 whitespace-nowrap">RESUELTO</td>
+                <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">
+                  FECHA DE ELEVACIÓN DE RECURSO
+                </td>
+                <td class="px-4 py-2 whitespace-nowrap">10/12/2024</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">
+                  MATERIA
+                </td>
+                <td class="px-4 py-2 whitespace-nowrap">
+                  TERMINACION DE LA RELACION DE TRABAJO
+                </td>
+                <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">
+                  SUB MATERIA
+                </td>
+                <td class="px-4 py-2 whitespace-nowrap">
+                  VENCIMIENTO DE CONTRATO
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Sección Partes Administrativas -->
+      <div class="mb-6">
+        <h2 class="text-base font-semibold text-gray-800 mb-2">
+          PARTES ADMINISTRATIVAS
+        </h2>
+        <div class="border border border-[#0287dd]">
+          <table class="min-w-full divide-y divide-gray-200">
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">
+                  ADMINISTRADO ENTIDAD
+                </td>
+                <td class="px-4 py-2 whitespace-nowrap">
+                  HUMAN MATENCIO RAUL GUDELIO RED DE SALUD CHANCHAMAYO
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Sección Historial del Expediente -->
+      <div class="mb-6">
+        <h2 class="text-base font-semibold text-gray-800 mb-2">
+          HISTORIAL DEL EXPEDIENTE
+        </h2>
+
+        <!-- Resolución -->
+        <div class="border border-gray-200 mb-4">
+          <div
+            class="bg-gray-100 px-4 py-2 font-medium border-b border-gray-200"
+          >
+            RESOLUCIÓN 001475-2025-SERVIR/TSC-Segunda Sala
+          </div>
+          <button
+            id="btnBuscarExpediente"
+            class="btn-primary text-blue-500 hover:text-blue-700 focus:outline-none"
+            aria-label="Buscar expediente"
+          >
+            <span class="text-green-500">✅</span>
+          </button>
+          <div class="p-4 border border-[#0287dd]">
+            <div class="grid grid-cols-3 gap-4 mb-2">
+              <div>
+                <span class="font-medium">FECHA</span>
+                <div>11/04/2025</div>
+              </div>
+              <div>
+                <span class="font-medium">SENTIDO</span>
+                <div>NULIDAD</div>
+              </div>
+              <div>
+                <span class="font-medium">SUMILLA</span>
+                <div></div>
+              </div>
             </div>
-            <div class="text-gray-600 text-sm">
-                FECHA ULT. ACTUALIZACIÓN: 11/04/2025
+
+            <div class="mt-4">
+              <h4 class="font-medium mb-2">NOTIFICACIONES</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <span class="font-medium">DESTINATARIO</span>
+                  <div>RAUL GUDELIO HUMAN MATENCIO</div>
+                </div>
+                <div>
+                  <span class="font-medium">FECHA</span>
+                  <div>11/04/2025</div>
+                </div>
+                <div>
+                  <span class="font-medium">DESTINATARIO</span>
+                  <div>RED DE SALUD CHANCHAMAYO</div>
+                </div>
+                <div>
+                  <span class="font-medium">FECHA</span>
+                  <div>11/04/2025</div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
 
-        <!-- Tabs simulados -->
-        <div class="flex border-b border-gray-300 mb-4">
-            <button
-                class="px-4 py-2 font-semibold text-sm border-b-2 border-[#0287dd] text-[#0287dd]">Expediente</button>
+        <!-- Oficio 1 -->
+        <div class="border border-gray-200 mb-4">
+          <div
+            class="bg-gray-100 px-4 py-2 font-medium border-b border-gray-200"
+          >
+            OFICIO 000332-2025-SERVIR/TSC
+          </div>
+          <div class="p-4 border border-[#0287dd]">
+            <div class="grid grid-cols-2 gap-4 mb-2">
+              <div>
+                <span class="font-medium">FECHA DE EMISIÓN</span>
+                <div>08/01/2025</div>
+              </div>
+              <div>
+                <span class="font-medium">TIPO</span>
+                <div>ADMISIBILIDAD</div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <h4 class="font-medium mb-2">NOTIFICACIONES</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <span class="font-medium">DESTINATARIO</span>
+                  <div>RAUL GUDELIO HUMAN MATENCIO</div>
+                </div>
+                <div>
+                  <span class="font-medium">FECHA</span>
+                  <div>08/01/2025</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Sección Detalle del Expediente -->
-        <div class="mb-6">
-            <h2 class="text-base font-semibold text-gray-800 mb-2">DETALLE DEL EXPEDIENTE</h2>
-            <div class="border border border-[#0287dd]">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">NRO. EXPEDIENTE</td>
-                            <td class="px-4 py-2 whitespace-nowrap">00023-2025</td>
-                            <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">FECHA INGRESO</td>
-                            <td class="px-4 py-2 whitespace-nowrap">10/12/2024</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">ESTADO</td>
-                            <td class="px-4 py-2 whitespace-nowrap">RESUELTO</td>
-                            <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">FECHA DE ELEVACIÓN DE RECURSO
-                            </td>
-                            <td class="px-4 py-2 whitespace-nowrap">10/12/2024</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">MATERIA</td>
-                            <td class="px-4 py-2 whitespace-nowrap">TERMINACION DE LA RELACION DE TRABAJO</td>
-                            <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">SUB MATERIA</td>
-                            <td class="px-4 py-2 whitespace-nowrap">VENCIMIENTO DE CONTRATO</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- Oficio 2 -->
+        <div class="border border-gray-200">
+          <div
+            class="bg-gray-100 px-4 py-2 font-medium border-b border-gray-200"
+          >
+            OFICIO 000333-2025-SERVIR/TSC
+          </div>
+          <div class="p-4 border border-[#0287dd]">
+            <div class="grid grid-cols-2 gap-4 mb-2">
+              <div>
+                <span class="font-medium">FECHA DE EMISIÓN</span>
+                <div>08/01/2025</div>
+              </div>
+              <div>
+                <span class="font-medium">TIPO</span>
+                <div>ADMISIBILIDAD</div>
+              </div>
             </div>
+
+            <div class="mt-4">
+              <h4 class="font-medium mb-2">NOTIFICACIONES</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <span class="font-medium">DESTINATARIO</span>
+                  <div>RED DE SALUD CHANCHAMAYO</div>
+                </div>
+                <div>
+                  <span class="font-medium">FECHA</span>
+                  <div>08/01/2025</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <!-- Sección Partes Administrativas -->
-        <div class="mb-6 ">
-            <h2 class="text-base font-semibold text-gray-800 mb-2">PARTES ADMINISTRATIVAS</h2>
-            <div class="border border border-[#0287dd]">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-4 py-2 whitespace-nowrap bg-gray-50 font-medium">ADMINISTRADO ENTIDAD</td>
-                            <td class="px-4 py-2 whitespace-nowrap">HUMAN MATENCIO RAUL GUDELIO RED DE SALUD CHANCHAMAYO
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Sección Historial del Expediente -->
-        <div class="mb-6">
-            <h2 class="text-base font-semibold text-gray-800 mb-2">HISTORIAL DEL EXPEDIENTE</h2>
-
-            <!-- Resolución -->
-            <div class="border border-gray-200 mb-4">
-                <div class="bg-gray-100 px-4 py-2 font-medium border-b border-gray-200">
-                    RESOLUCIÓN 001475-2025-SERVIR/TSC-Segunda Sala
-                </div>
-                <button id="btnBuscarExpediente"
-                    class="btn-primary text-blue-500 hover:text-blue-700 focus:outline-none"
-                    aria-label="Buscar expediente">
-                    <span class="text-green-500">✅</span>
-
-                </button>
-                <div class="p-4 border border-[#0287dd]">
-                    <div class="grid grid-cols-3 gap-4 mb-2">
-                        <div>
-                            <span class="font-medium">FECHA</span>
-                            <div>11/04/2025</div>
-                        </div>
-                        <div>
-                            <span class="font-medium">SENTIDO</span>
-                            <div>NULIDAD</div>
-                        </div>
-                        <div>
-                            <span class="font-medium">SUMILLA</span>
-                            <div></div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <h4 class="font-medium mb-2">NOTIFICACIONES</h4>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <span class="font-medium">DESTINATARIO</span>
-                                <div>RAUL GUDELIO HUMAN MATENCIO</div>
-                            </div>
-                            <div>
-                                <span class="font-medium">FECHA</span>
-                                <div>11/04/2025</div>
-                            </div>
-                            <div>
-                                <span class="font-medium">DESTINATARIO</span>
-                                <div>RED DE SALUD CHANCHAMAYO</div>
-                            </div>
-                            <div>
-                                <span class="font-medium">FECHA</span>
-                                <div>11/04/2025</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Oficio 1 -->
-            <div class="border border-gray-200 mb-4">
-                <div class="bg-gray-100 px-4 py-2 font-medium border-b border-gray-200">
-                    OFICIO 000332-2025-SERVIR/TSC
-                </div>
-                <div class="p-4 border border-[#0287dd] ">
-                    <div class="grid grid-cols-2 gap-4 mb-2">
-                        <div>
-                            <span class="font-medium">FECHA DE EMISIÓN</span>
-                            <div>08/01/2025</div>
-                        </div>
-                        <div>
-                            <span class="font-medium">TIPO</span>
-                            <div>ADMISIBILIDAD</div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <h4 class="font-medium mb-2">NOTIFICACIONES</h4>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <span class="font-medium">DESTINATARIO</span>
-                                <div>RAUL GUDELIO HUMAN MATENCIO</div>
-                            </div>
-                            <div>
-                                <span class="font-medium">FECHA</span>
-                                <div>08/01/2025</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Oficio 2 -->
-            <div class="border border-gray-200">
-                <div class="bg-gray-100 px-4 py-2 font-medium border-b border-gray-200">
-                    OFICIO 000333-2025-SERVIR/TSC
-                </div>
-                <div class="p-4 border border-[#0287dd] ">
-                    <div class="grid grid-cols-2 gap-4 mb-2">
-                        <div>
-                            <span class="font-medium">FECHA DE EMISIÓN</span>
-                            <div>08/01/2025</div>
-                        </div>
-                        <div>
-                            <span class="font-medium">TIPO</span>
-                            <div>ADMISIBILIDAD</div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <h4 class="font-medium mb-2">NOTIFICACIONES</h4>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <span class="font-medium">DESTINATARIO</span>
-                                <div>RED DE SALUD CHANCHAMAYO</div>
-                            </div>
-                            <div>
-                                <span class="font-medium">FECHA</span>
-                                <div>08/01/2025</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="text-center text-xs text-gray-600 mt-10 py-4">
-        Aplicativo Administrado por la Subjefatura de Tecnología de la Información<br />
-        Pasaje Francisco de Zela 150 - Piso 10, Jesús María, Lima, Perú<br />
-        ☎ 206 3370 | ✉️ <a href="mailto:sitce@servir.gob.pe" class="underline text-blue-600">sitce@servir.gob.pe</a>
+      Aplicativo Administrado por la Subjefatura de Tecnología de la
+      Información<br />
+      Pasaje Francisco de Zela 150 - Piso 10, Jesús María, Lima, Perú<br />
+      ☎ 206 3370 | ✉️
+      <a href="mailto:sitce@servir.gob.pe" class="underline text-blue-600"
+        >sitce@servir.gob.pe</a
+      >
     </footer>
 
     <script>
-        // Mostrar modal al hacer clic en el botón
-        document.getElementById('btnBuscarExpediente').addEventListener('click', function () {
-            document.getElementById('pdfModal').classList.remove('hidden');
+      // Mostrar modal al hacer clic en el botón
+      document
+        .getElementById("btnBuscarExpediente")
+        .addEventListener("click", function () {
+          document.getElementById("pdfModal").classList.remove("hidden");
         });
 
-        // Ocultar modal al hacer clic en el botón de cerrar
-        document.getElementById('closeModal').addEventListener('click', function () {
-            document.getElementById('pdfModal').classList.add('hidden');
+      // Ocultar modal al hacer clic en el botón de cerrar
+      document
+        .getElementById("closeModal")
+        .addEventListener("click", function () {
+          document.getElementById("pdfModal").classList.add("hidden");
         });
 
-        // Ocultar modal al hacer clic fuera del contenido
-        document.getElementById('pdfModal').addEventListener('click', function (e) {
-            if (e.target === this) {
-                this.classList.add('hidden');
-            }
+      // Ocultar modal al hacer clic fuera del contenido
+      document
+        .getElementById("pdfModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.classList.add("hidden");
+          }
         });
     </script>
-</body>
-
+  </body>
 </html>
