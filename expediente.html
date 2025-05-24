@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consulta de Expediente - Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Boxicons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" />
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+<body class="bg-gray-100 text-sm">
+
+
+
+    <!-- Encabezado rojo -->
+
+    <div class="bg-[#0287dd] text-white px-4 py-2 flex justify-between items-center">
+        <div>
+            <h1>sdas</h1>
+        </div>
+        <div class="text-right">
+            <span class="text-sm font-semibold">Consulta en Línea del Estado de Expedientes del Tribunal del Servicio
+                Civil (CLEE-TSC)</span><br>
+            <span class="text-xs">Versión 1.0.2.0</span>
+        </div>
+    </div>
+
+
+
+
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 items-center">
+
+        <div class="items-center">
+
+            <h1 class="text-xl font-bold border-b-2  border-[#0287dd] mb-4">
+                CONSULTA EN LÍNEA DEL ESTADO DE EXPEDIENTES DEL TRIBUNAL DEL SERVICIO CIVIL (CLEF-TSC)
+            </h1>
+            <div class="flex border-b border-gray-300 mb-4">
+                <button class="px-4 py-2 font-semibold text-sm ] text-[#0287dd]"></button>
+
+            </div>
+            <div class="mb-4 items-center" style=" text-align: end;">
+                <p class="text-gray-700 items-center">
+                    Se ha(n) encontrado 1 resultado(s).
+                    <button href="#"
+                        class=" hover:underline btn btn-primary  gap-1 bg-gray-200 border px-4 py-1 rounded hover:bg-gray-300">
+                        Retroceder
+                    </button>
+                </p>
+            </div>
+        </div>
+
+        <div class="centrar-items w-full flex justify-center">
+            <div class="flex items-center space-x-1">
+                <button
+                    class="px-2 py-1 text-sm border border-gray-300 rounded-sm text-gray-500 hover:bg-gray-200 cursor-not-allowed">
+                    &lt;&lt;
+                </button>
+                <button
+                    class="px-2 py-1 text-sm border border-gray-300 rounded-sm text-gray-500 hover:bg-gray-200 cursor-not-allowed">
+                    &lt;
+                </button>
+
+                <button
+                    class="px-2 py-1 text-sm border border-blue-500 rounded-sm bg-blue-100 text-blue-700 font-medium">
+                    1
+                </button>
+
+                <button
+                    class="px-2 py-1 text-sm border border-gray-300 rounded-sm text-gray-500 hover:bg-gray-200 cursor-not-allowed">
+                    &gt;
+                </button>
+                <button
+                    class="px-2 py-1 text-sm border border-gray-300 rounded-sm text-gray-500 hover:bg-gray-200 cursor-not-allowed">
+                    &gt;&gt;
+                </button>
+
+                <div class="relative">
+                    <select
+                        class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 text-sm py-1 px-2 rounded-sm shadow-sm leading-tight focus:outline-none focus:border-blue-500">
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 text-gray-700">
+                        <svg class="fill-current h-3 w-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full border-collapse">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-gray-300 px-4 py-2 text-left">Nro</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Detalle de Expediente</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Ver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-4 py-2">1</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            <p><strong>Nro. Expediente:</strong> 00023-2025</p>
+                            <p><strong>Entidad:</strong> RED DE SALUD CHANCHAMAYO</p>
+                            <p><strong>Administrado:</strong> RAUL GUDELIO HUAMAN MATENCIO</p>
+                        </td>
+                        <td class="border border-gray-300 px-4 py-2 text-center">
+                            <button id="btnBuscarExpediente"
+                                class="btn-primary text-blue-500 hover:text-blue-700 focus:outline-none"
+                                aria-label="Buscar expediente">
+                                <span class="text-green-500">✅</span>
+
+                            </button>
+                        </td>
+
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-gray-600 mt-10 py-4">
+        Aplicativo Administrado por la Subjefatura de Tecnología de la Información<br />
+        Pasaje Francisco de Zela 150 - Piso 10, Jesús María, Lima, Perú<br />
+        ☎ 206 3370 | ✉️ <a href="mailto:sitce@servir.gob.pe" class="underline text-blue-600">sitce@servir.gob.pe</a>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("btnBuscarExpediente").addEventListener("click", function () {
+
+                    window.location.href = "detalle.html";
+              
+            });
+        });
+
+    </script>
+</body>
+
+</html>
