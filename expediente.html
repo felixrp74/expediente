@@ -17,19 +17,20 @@
 <body class="bg-gray-100 text-sm">
 
 
+    <!-- Encabezado azul -->
 
-    <!-- Encabezado rojo -->
+<div class="bg-[#0287dd] text-white px-4 py-2 flex justify-between items-center">
+  <div class="flex items-center space-x-4">
+    <img class="w-12 h-12" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Logo_UNAP.png/500px-Logo_UNAP.png" alt="">
+    <span class="text-lg font-semibold">MI EXPEDIENTE ELECTRÓNICO</span>
+  </div>
 
-    <div class="bg-[#0287dd] text-white px-4 py-2 flex justify-between items-center">
-        <div>
-            <h1>sdas</h1>
-        </div>
-        <div class="text-right">
-            <span class="text-sm font-semibold">Consulta en Línea del Estado de Expedientes del Tribunal del Servicio
-                Civil (CLEE-TSC)</span><br>
-            <span class="text-xs">Versión 1.0.2.0</span>
-        </div>
-    </div>
+  <div class="text-right">
+    
+    <span class="text-lg">Consulta en línea de expedientes judiciales - Versión 1.0.2.0</span>
+  </div>
+</div>
+
 
 
 
@@ -110,17 +111,31 @@
                     <tr class="hover:bg-gray-50">
                         <td class="border border-gray-300 px-4 py-2">1</td>
                         <td class="border border-gray-300 px-4 py-2">
-                            <p><strong>Nro. Expediente:</strong> 00023-2025</p>
-                            <p><strong>Entidad:</strong> RED DE SALUD CHANCHAMAYO</p>
-                            <p><strong>Administrado:</strong> RAUL GUDELIO HUAMAN MATENCIO</p>
+                            <p><strong>Nro. Expediente:</strong> 00001-2025-0-2111-JR-CI-03     </p>
+                            <p><strong>DEMANDANTE:</strong> IPE TICONA, ISABEL</p>
+                            <p><strong>DEMANDADO:</strong> MUNICIPALIDAD PROVINCIAL DE SAN ROMÁN</p>
                         </td>
                         <td class="border border-gray-300 px-4 py-2 text-center">
-                            <button id="btnBuscarExpediente"
+                            <!-- <button id="btnBuscarExpediente"
                                 class="btn-primary text-blue-500 hover:text-blue-700 focus:outline-none"
                                 aria-label="Buscar expediente">
                                 <span class="text-green-500">✅</span>
 
+                            </button> -->
+
+                            <div>
+                            <button id="btnBuscarExpediente"
+                                class="bg-gray-300 hover:bg-gray-400 text-gray-800 border border-gray-400 rounded-md p-1 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500"
+                                aria-label="Buscar expediente">
+                                <svg class="w-5 h-5" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+                                </svg>
                             </button>
+                        </div>
                         </td>
 
 
